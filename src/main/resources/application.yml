@@ -6,3 +6,6 @@ spring:
     url: ${database-url}
     password: ${database-password}
     username: ${database-username}
+server:
+  servlet:
+    context-path: /lena-shoes
