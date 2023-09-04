@@ -79,10 +79,10 @@
       <nav class = "header__menu">
         <ul class = "header__list">
           <li>
-            <a href = "#" class = "header__link header__link_active">Головна</a>
+            <a th:href = "@{/}" class = "header__link">Головна</a>
           </li>
           <li>
-            <a href = "#" class = "header__link">Каталог</a>
+            <a th:href = "@{/catalog}" class = "header__link">Каталог</a>
           </li>
           <li>
             <a href = "#" class = "header__link">Про нас</a>
@@ -125,11 +125,11 @@
         <span class = "footer__title">Навігація</span>
         <ul>
           <li class="footer__navigation__list__item">
-            <a href = "#"
-               class = "footer__item footer__item_active footer__navigation__item">Головна</a>
+            <a th:href = "@{/}"
+               class = "footer__item footer__navigation__item">Головна</a>
           </li>
           <li class="footer__navigation__list__item">
-            <a href = "#" class = "footer__item footer__navigation__item">Каталог</a>
+            <a th:href = "@{/catalog}" class = "footer__item footer__navigation__item">Каталог</a>
           </li>
           <li class="footer__navigation__list__item">
             <a href = "#" class = "footer__item footer__navigation__item">Про нас</a>
@@ -190,6 +190,35 @@
     </div>
   </div>
 </footer>
+
+<nav th:fragment="pagination" class="pagination__container">
+  <ul class="pagination">
+    <li class="pagination__previous__button" th:classappend="${currentPageNumber==0} ?'disabled':''">
+      <a th:href="@{/catalog?page={pageNumber}(pageNumber=${currentPageNumber})}">
+        <img th:src="@{/img/pagination_previous_button.svg}">
+      </a>
+    </li>
+    <li th:if="${totalPageNumber>=9 && currentPageNumber>4 && currentPageNumber+5<=totalPageNumber}" th:each="i : ${#numbers.sequence(currentPageNumber-3,currentPageNumber+5)}" th:classappend="${i==currentPageNumber+1}?'active':''">
+      <a th:href="@{/catalog?page={pageNumber}(pageNumber=${i})}" class="page__link" th:text="${i}"></a>
+    </li>
+    <li th:if="${totalPageNumber>=9 && currentPageNumber>4 && currentPageNumber+5>totalPageNumber}" th:each="i : ${#numbers.sequence(totalPageNumber-8,totalPageNumber)}" th:classappend="${i==currentPageNumber+1}?'active':''">
+      <a th:href="@{/catalog?page={pageNumber}(pageNumber=${i})}" class="page__link" th:text="${i}"></a>
+    </li>
+    <li th:if="${totalPageNumber>=9 && currentPageNumber<=4}" th:each="i : ${#numbers.sequence(1,9)}" th:classappend="${i==currentPageNumber+1}?'active':''">
+      <a th:href="@{/catalog?page={pageNumber}(pageNumber=${i})}" class="page__link" th:text="${i}"></a>
+    </li>
+
+    <li th:if="${totalPageNumber<9}" th:each="i : ${#numbers.sequence(1,totalPageNumber)}" th:classappend="${i==currentPageNumber+1}?'active':''">
+      <a th:href="@{/catalog?page={pageNumber}(pageNumber=${i})}" class="page__link" th:text="${i}"></a>
+    </li>
+
+    <li class="pagination__next__button" th:classappend="${currentPageNumber==totalPageNumber-1} ?'disabled':''">
+      <a th:href="@{/catalog?page={pageNumber}(pageNumber=${currentPageNumber+2})}">
+        <img th:src="@{/img/pagination_next_button.svg}">
+      </a>
+    </li>
+  </ul>
+</nav>
 
 </body>
 </html>
