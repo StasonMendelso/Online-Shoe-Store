@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Map;
+
 /**
  * @author Stanislav Hlova
  */
@@ -45,10 +47,10 @@ public class CatalogController {
       shoesPerPage = shoeService.getShoesByPage(PageRequest.of(FIRST_PAGE, sizePerPage));
     }
 
-    model.addAttribute("shoesList", shoesPerPage.get().map(shoeMapper::toDto).toList());
-    model.addAttribute("totalShoesNumber", shoesPerPage.getTotalElements());
-    model.addAttribute("totalPageNumber", shoesPerPage.getTotalPages());
-    model.addAttribute("currentPageNumber", shoesPerPage.getPageable().getPageNumber());
+    model.addAllAttributes(Map.of("shoesList", shoesPerPage.get().map(shoeMapper::toDto).toList(),
+            "totalShoesNumber", shoesPerPage.getTotalElements(),
+            "totalPageNumber", shoesPerPage.getTotalPages(),
+            "currentPageNumber", shoesPerPage.getPageable().getPageNumber()));
 
     return "catalog/catalog";
   }

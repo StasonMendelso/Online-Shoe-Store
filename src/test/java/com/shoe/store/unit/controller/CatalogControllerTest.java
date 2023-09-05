@@ -25,6 +25,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.ui.Model;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Stanislav Hlova
@@ -77,11 +78,11 @@ class CatalogControllerTest extends BaseUnitTest {
 
             catalogController.viewCatalog(page, sizePerPage, model);
 
-            verify(model, times(1)).addAttribute("shoesList",
-                    shoeList.stream().map(shoeMapper::toDto).toList());
-            verify(model, times(1)).addAttribute("totalShoesNumber", shoePage.getTotalElements());
-            verify(model, times(1)).addAttribute("totalPageNumber", shoePage.getTotalPages());
-            verify(model, times(1)).addAttribute("currentPageNumber", shoePageable.getPageNumber());
+            verify(model, times(1)).addAllAttributes(
+                    Map.of("shoesList", shoeList.stream().map(shoeMapper::toDto).toList(),
+                    "totalShoesNumber", shoePage.getTotalElements(),
+                    "totalPageNumber", shoePage.getTotalPages(),
+                    "currentPageNumber", shoePageable.getPageNumber()));
         }
 
     }
