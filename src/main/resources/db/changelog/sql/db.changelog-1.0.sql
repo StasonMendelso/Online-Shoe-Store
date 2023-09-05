@@ -190,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `shoe_insole_material`
 
 
 -- -----------------------------------------------------
--- Table `shoe_inside_material`
+-- Table `shoe_product_material`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS shoe_product_material
 (
@@ -290,7 +290,7 @@ CREATE TABLE IF NOT EXISTS `shoes`
     INDEX `fk_shoes_shoe_sole_material1_idx` (`shoe_sole_material_id` ASC) VISIBLE,
     INDEX `fk_shoes_shoe_top_material1_idx` (`shoe_top_material_id` ASC) VISIBLE,
     INDEX `fk_shoes_shoe_insole_material1_idx` (`shoe_insole_material_id` ASC) VISIBLE,
-    INDEX `fk_shoes_shoe_inside_material1_idx` (shoe_product_material_id ASC) VISIBLE,
+    INDEX `fk_shoes_shoe_product_material1_idx` (shoe_product_material_id ASC) VISIBLE,
     INDEX `fk_shoes_shoe_heel_type1_idx` (shoe_heel_height_id ASC) VISIBLE,
     INDEX `fk_shoes_shoe_sole_type1_idx` (`shoe_sole_type_id` ASC) VISIBLE,
     INDEX `fk_shoes_sex1_idx` (`sex_id` ASC) VISIBLE,
@@ -326,7 +326,7 @@ CREATE TABLE IF NOT EXISTS `shoes`
     CONSTRAINT `fk_shoes_shoe_insole_material1`
         FOREIGN KEY (`shoe_insole_material_id`)
             REFERENCES `shoe_insole_material` (`id`),
-    CONSTRAINT `fk_shoes_shoe_inside_material1`
+    CONSTRAINT `fk_shoes_shoe_product_material1`
         FOREIGN KEY (shoe_product_material_id)
             REFERENCES shoe_product_material (`id`),
     CONSTRAINT `fk_shoes_shoe_sock_type1`

@@ -8,13 +8,13 @@ import java.util.Objects;
  * @author Stanislav Hlova
  */
 @Component
-public class PageValidator extends Validator<Integer> {
+public class SizePerPageValidator extends Validator<Integer> {
 
   @Override
-  public boolean isValid(Integer page) {
-    if(Objects.isNull(page)){
+  public boolean isValid(Integer sizePerPage) {
+    if(Objects.isNull(sizePerPage)){
       return false;
     }
-    return page > 0;
+    return sizePerPage > 0;
   }
 }
