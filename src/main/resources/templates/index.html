@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta th:replace="~{fragments::head-links}">
+</head>
+<body>
+    <div class = "wrapper">
+        <header th:replace="~{fragments::header}">
+        </header>
+        <main class = "content">
+            <div class = "content__container container">
+                <div class = "popular__categories">
+                    <div class = "popular__categories__top">
+                        <div class = "popular__categories__icon">
+                            <img th:src = "@{/img/star_icon.svg}">
+                        </div>
+                        <span class = "popular__categories__title">Популярні категорії</span>
+                    </div>
+                    <div class = "popular__category__container">
+                        <div class = "popular__category__item">
+                            <a href = "#" class = "popular__category__image">
+                                <img th:src = "@{/img/tufli.jpeg}">
+                            </a>
+                            <a href = "#" class = "popular__category__name">
+                                Туфлі
+                            </a>
+                        </div>
+                        <div class = "popular__category__item">
+                            <a href = "#" class = "popular__category__image">
+                                <img th:src = "@{/img/bosonijki.jpg}">
+                            </a>
+                            <a href = "#" class = "popular__category__name">
+                                Босоніжки
+                            </a>
+                        </div>
+                        <div class = "popular__category__item">
+                            <a href = "#" class = "popular__category__image">
+                                <img th:src = "@{/img/baletki.jpg}">
+                            </a>
+                            <a href = "#" class = "popular__category__name">
+                                Балетки
+                            </a>
+                        </div>
+                        <div class = "popular__category__item">
+                            <a href = "#" class = "popular__category__image">
+                                <img th:src = "@{/img/shlopanci.jpg}">
+                            </a>
+                            <a href = "#" class = "popular__category__name">
+                                Шльопанці
+                            </a>
+                        </div>
+                        <div class = "popular__category__item">
+                            <a href = "#" class = "popular__category__image">
+                                <img th:src = "@{/img/krosivki.jpg}">
+                            </a>
+                            <a href = "#" class = "popular__category__name">
+                                Кросівки
+                            </a>
+                        </div>
+                        <div class = "popular__category__item">
+                            <a href = "#" class = "popular__category__image">
+                                <img th:src = "@{/img/mokasini.jpg}">
+                            </a>
+                            <a href = "#" class = "popular__category__name">
+                                Мокасини
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+        <footer th:replace="~{fragments::footer}">
+        </footer>
+    </div>
+</body>
+</html>

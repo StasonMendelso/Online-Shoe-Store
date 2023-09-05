@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head-links">
+  <meta charset = "UTF-8">
+
+  <!-- Адаптив -->
+  <meta name = "viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <title>Lena Shoes - Онлайн-магазин жіночого взуття в м. Кобеляки</title>
+  <link href = "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,400&family=Roboto+Condensed&display=swap"
+        rel = "stylesheet">
+  <link rel = "icon" th:href = "@{/img/logo.svg}">
+  <link rel = "stylesheet" th:href = "@{/css/style.css}">
+</head>
+<body>
+
+<header th:fragment="header" class = "header">
+  <div class = "header__top">
+    <div class = "header__top__container container">
+      <div class = "header__container">
+        <div class = "sitename__container">
+          <div class = "header__logo">
+            <img th:src = "@{/img/logo.svg}" alt = "Logo image">
+          </div>
+          <div class = "header__sitename__text">
+            Lena Shoes
+          </div>
+        </div>
+        <div class = "header__contacts__items">
+          <div class = "header__contacts__item">
+            <div class = "header__contact__item__icon">
+              <img th:src = "@{/img/black_phone_icon.svg}">
+            </div>
+            <span class = "header__contact__item_text">
+                                    +38 (099) 317-64-52
+                                </span>
+          </div>
+          <div class = "header__contacts__item">
+            <div class = "header__contact__item__icon">
+              <img th:src = "@{/img/black_email_icon.svg}">
+            </div>
+            <span class = "header__contact__item_text">
+                                    info@gmail.com
+                                </span>
+          </div>
+        </div>
+        <div class = "header__auth__container">
+          <a href = "#" class = "header__auth__link">Вхід</a>
+          <a href = "#" class = "header__auth__link">Реєстрація</a>
+        </div>
+        <div class = "header__cart__container">
+          <div class = "cart__logo">
+            <img th:src = "@{/img/cart.svg}" alt = "Cart image">
+          </div>
+          <div class = "cart__info">
+            <div class = "cart__quantity__info">
+              <span>Кількість товарів: </span>
+              <span>125</span>
+            </div>
+            <div class = "cart__total__info">
+              <span>Сума: </span>
+              <span>10000</span>
+              <span>грн</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form class = "search__container">
+        <input type = "text" name = "search" placeholder = "Пошук" class = "search__input">
+        <button type = "submit" class = "search__button">
+          <img th:src = "@{/img/search-alt.svg}">
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+  <div class = "header__navbar">
+    <div class = "header__navbar__container container">
+      <nav class = "header__menu">
+        <ul class = "header__list">
+          <li>
+            <a th:href = "@{/}" class = "header__link">Головна</a>
+          </li>
+          <li>
+            <a th:href = "@{/catalog}" class = "header__link">Каталог</a>
+          </li>
+          <li>
+            <a href = "#" class = "header__link">Про нас</a>
+          </li>
+          <li>
+            <a href = "#" class = "header__link">Доставка та оплата</a>
+          </li>
+          <li>
+            <a href = "#" class = "header__link">Контакти</a>
+          </li>
+          <li>
+            <a href = "#" class = "header__link">Де знайти</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<footer th:fragment="footer" class = "footer">
+  <div class = "footer__container container">
+    <div class = "footer__columns">
+      <div class = "footer__column">
+        <div class = "footer__sitename__logo">
+          <div class = "footer__logo">
+            <img th:src = "@{/img/logo.svg}">
+          </div>
+          <div class = "footer__sitename__text">
+            Lena Shoes
+          </div>
+        </div>
+
+        <div class = "footer__schedule">
+          <div class = "footer__title">Графік роботи</div>
+          <div class = "footer__item">Кожен день</div>
+          <div class = "footer__item footer__item_express">8.00 - 18.00</div>
+        </div>
+      </div>
+      <div class = "footer__column">
+        <span class = "footer__title">Навігація</span>
+        <ul>
+          <li class="footer__navigation__list__item">
+            <a th:href = "@{/}"
+               class = "footer__item footer__navigation__item">Головна</a>
+          </li>
+          <li class="footer__navigation__list__item">
+            <a th:href = "@{/catalog}" class = "footer__item footer__navigation__item">Каталог</a>
+          </li>
+          <li class="footer__navigation__list__item">
+            <a href = "#" class = "footer__item footer__navigation__item">Про нас</a>
+          </li>
+          <li class="footer__navigation__list__item">
+            <a href = "#" class = "footer__item footer__navigation__item">Доставка та оплата</a>
+          </li>
+          <li class="footer__navigation__list__item">
+            <a href = "#" class = "footer__item footer__navigation__item">Де знайти</a>
+          </li>
+          <li class="footer__navigation__list__item">
+            <a href = "#" class = "footer__item footer__navigation__item">Контакти</a>
+          </li>
+
+        </ul>
+      </div>
+      <div class = "footer__column">
+        <div class = "footer__title">Контакти</div>
+        <div class = "footer__contacts__item footer__item">
+          <div class = "footer__contact__item__icon">
+            <img th:src = "@{/img/white_phone_icon.svg}">
+          </div>
+          <span class = "footer__contact__item_text">
+                                    +38 (099) 317-64-52
+                                </span>
+        </div>
+        <div class = "footer__contacts__item footer__item">
+          <div class = "footer__contact__item__icon">
+            <img th:src = "@{/img/white_email_icon.svg}">
+          </div>
+          <span class = "footer__contact__item_text">
+                                    info@gmail.com
+                                </span>
+        </div>
+      </div>
+      <div class = "footer__column">
+        <div class = "footer__title">Базарні точки</div>
+        <div class = "footer__item footer__item_italic">(Заздалегідь уточнюйте, чи працюватиме точка)
+        </div>
+        <div class = "remote__place__schedule footer__item">
+          <div class = "remote__place__days">ПН, СР, ПТ, НД</div>
+          <div class = "remote__place__times">7.00 - 13.00</div>
+          <a href = "https://www.google.com/maps/place/%D0%BF%D0%BB%D0%BE%D1%89%D0%B0+%D0%9F%D0%B5%D1%80%D0%B5%D0%BC%D0%BE%D0%B3%D0%B8,+%D0%9A%D0%BE%D0%B1%D0%B5%D0%BB%D1%8F%D0%BA%D0%B8,+%D0%9F%D0%BE%D0%BB%D1%82%D0%B0%D0%B2%D1%81%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+39200/@49.1497813,34.2050826,18z/data=!3m1!4b1!4m10!1m2!2m1!1z0LwuINCa0L7QsdC10LvRj9C60LgsINC_0LvQvtGJ0LAg0J_QtdGA0LXQvNC-0LPQuC_Qn9GW0LTQutC-0LLQsA!3m6!1s0x40d9e9e0e699cd5d:0x401b2abd7acbee46!8m2!3d49.1497801!4d34.2067948!15sCkDQvC4g0JrQvtCx0LXQu9GP0LrQuCwg0L_Qu9C-0YnQsCDQn9C10YDQtdC80L7Qs9C4L9Cf0ZbQtNC60L7QstCwkgEFcm91dGXgAQA!16s%2Fg%2F12xqcpgnm?entry=ttu"
+             target = "_blank"
+             class = "remote__place__location">м. Кобеляки, площа Перемоги/Підкова</a>
+        </div>
+        <div class = "remote__place__schedule footer__item">
+          <div class = "remote__place__days">ЧТ</div>
+          <div class = "remote__place__times">7.00 - 12.00</div>
+          <a href = "https://www.google.com/maps/place/48%C2%B056'18.2%22N+34%C2%B029'01.6%22E/@48.9383788,34.4824885,340m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d48.938377!4d34.483776?entry=ttu"
+             target = "_blank"
+             class = "remote__place__location">м. Царичанка, вул. Робоча</a>
+        </div>
+      </div>
+    </div>
+    <div class = "copyright">
+      © LENA SHOES, 2023. Всі права захищені
+    </div>
+  </div>
+</footer>
+
+<nav th:fragment="pagination" class="pagination__container">
+  <ul class="pagination">
+    <li class="pagination__previous__button" th:classappend="${currentPageNumber==0} ?'disabled':''">
+      <a th:href="@{/catalog?page={pageNumber}(pageNumber=${currentPageNumber})}">
+        <img th:src="@{/img/pagination_previous_button.svg}">
+      </a>
+    </li>
+    <li th:if="${totalPageNumber>=9 && currentPageNumber>4 && currentPageNumber+5<=totalPageNumber}" th:each="i : ${#numbers.sequence(currentPageNumber-3,currentPageNumber+5)}" th:classappend="${i==currentPageNumber+1}?'active':''">
+      <a th:href="@{/catalog?page={pageNumber}(pageNumber=${i})}" class="page__link" th:text="${i}"></a>
+    </li>
+    <li th:if="${totalPageNumber>=9 && currentPageNumber>4 && currentPageNumber+5>totalPageNumber}" th:each="i : ${#numbers.sequence(totalPageNumber-8,totalPageNumber)}" th:classappend="${i==currentPageNumber+1}?'active':''">
+      <a th:href="@{/catalog?page={pageNumber}(pageNumber=${i})}" class="page__link" th:text="${i}"></a>
+    </li>
+    <li th:if="${totalPageNumber>=9 && currentPageNumber<=4}" th:each="i : ${#numbers.sequence(1,9)}" th:classappend="${i==currentPageNumber+1}?'active':''">
+      <a th:href="@{/catalog?page={pageNumber}(pageNumber=${i})}" class="page__link" th:text="${i}"></a>
+    </li>
+
+    <li th:if="${totalPageNumber<9}" th:each="i : ${#numbers.sequence(1,totalPageNumber)}" th:classappend="${i==currentPageNumber+1}?'active':''">
+      <a th:href="@{/catalog?page={pageNumber}(pageNumber=${i})}" class="page__link" th:text="${i}"></a>
+    </li>
+
+    <li class="pagination__next__button" th:classappend="${currentPageNumber==totalPageNumber-1} ?'disabled':''">
+      <a th:href="@{/catalog?page={pageNumber}(pageNumber=${currentPageNumber+2})}">
+        <img th:src="@{/img/pagination_next_button.svg}">
+      </a>
+    </li>
+  </ul>
+</nav>
+
+</body>
+</html>

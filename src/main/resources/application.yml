@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: ${active-profile}
+  datasource:
+    driver-class-name: ${database-driver-class}
+    url: ${database-url}
+    password: ${database-password}
+    username: ${database-username}
+server:
+  servlet:
+    context-path: /lena-shoes

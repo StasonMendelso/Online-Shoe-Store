@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta th:replace="~{fragments::head-links}">
+</head>
+<body>
+<div class="wrapper">
+  <header th:replace="~{fragments::header}"></header>
+  <main class="content">
+    <div class="content__container container">
+      <div class="catalog__container">
+        <div class="catalog__header">
+          <span class="catalog__title">Каталог</span>
+          <span class="catalog__total__products__label">Всього товарів: <span
+              class="catalog__total__products__number" th:text="${totalShoesNumber}">0</span></span>
+        </div>
+        <div class="catalog__items" th:if="${totalShoesNumber!=0}">
+          <div th:each="item:${shoesList}" class="catalog__item" th:classappend="${item.getProductStatus() == T(com.shoe.store.enums.ProductStatus).NOT_IN_AVAILABLE}? 'catalog\_\_item\_\_not\_\_available' : ''">
+            <a th:href="@{/catalog/{id}(id=${item.id})}" class="item__image">
+              <img th:src="@{/img/photo_not_found.svg}">
+            </a>
+            <div class="item__content">
+              <span class="item__price"><span class="item__price__number" th:text="${#numbers.formatDecimal(item.getPrice(),0,2)}">0</span> грн</span>
+              <div class="item__info__container">
+                <a th:href="@{/catalog/{id}(id=${item.id})}" class="item__title" th:text="${item.getName()}">Башили K52-3 бежеві на міні танкетці штучна
+                  шкіра</a>
+                <button class="item__cart__image">
+                  <img th:src="@{/img/cart.svg}">
+                </button>
+              </div>
+              <span class="item__status " th:text="${item.getProductStatus().getName()}" th:classappend="${item.getProductStatus() == T(com.shoe.store.enums.ProductStatus).IN_AVAILABLE} ? 'item\_\_status\_\_available' : 'item\_\_status\_\_not\_\_available'">Статус</span>
+            </div>
+          </div>
+        </div>
+        <div th:if="${totalShoesNumber==0}">
+          <span>На жаль, каталог не містить товарів.</span>
+        </div>
+        <nav th:if="${totalShoesNumber!=0}" th:insert="~{fragments::pagination}"></nav>
+      </div>
+
+    </div>
+  </main>
+  <footer th:replace="~{fragments::footer}">
+  </footer>
+</div>
+</body>
+</html>
