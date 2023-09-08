@@ -1,15 +1,15 @@
 package com.shoe.store.integration.database.repository;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import com.shoe.store.database.repository.ShoeRepository;
 import com.shoe.store.integration.IntegrationTestBase;
 import com.shoe.store.model.shoe.Shoe;
-import java.util.List;
 import lombok.AllArgsConstructor;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+
+import java.util.List;
 
 /**
  * @author Stanislav Hlova
@@ -40,4 +40,13 @@ class ShoeRepositoryIT extends IntegrationTestBase {
     assertEquals(expectedElementsNumber, shoePage.getPageable().getPageSize());
   }
 
+
+  @Test
+  void shouldReturnTwoSiblingsColor_whenTwoSiblingsPersisted(){
+    final Long id = 1L;
+
+    List<Shoe> shoeSiblingsById = shoeRepository.findAllShoeColorsById(id);
+
+
+  }
 }

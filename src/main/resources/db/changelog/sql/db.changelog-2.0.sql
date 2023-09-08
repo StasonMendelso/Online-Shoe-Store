@@ -16,4 +16,3 @@ ALTER TABLE shoes
     DROP COLUMN product_status_id;
 
 DROP TABLE product_status;
-

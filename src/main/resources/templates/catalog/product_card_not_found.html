@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta th:replace="~{fragments::head-links}">
+</head>
+<body>
+<div class="wrapper">
+    <header th:replace="~{fragments::header}"></header>
+    <main class="content">
+        <div class="content__container container">
+            <div class = "product__not_found__container">
+                <div class = "product__not__found__img">
+                    <img th:src = "@{/img/product_not_found.svg}">
+                </div>
+                <div class = "product__not__found__content">
+                    <div class = "product__not__found__title">
+                        Товар не знайдено
+                    </div>
+                    <div class="product__not__found__link">
+                        <a th:href="@{/catalog}" >Перейти до каталогу</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer th:replace="~{fragments::footer}">
+    </footer>
+</div>
+</body>
+</html>

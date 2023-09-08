@@ -391,7 +391,7 @@ CREATE TABLE IF NOT EXISTS `shoe_files`
 CREATE TABLE IF NOT EXISTS `shoe_sizes`
 (
     `shoes_id` BIGINT         NOT NULL,
-    `size`     DECIMAL(10, 0) NOT NULL,
+    `size`     INT NOT NULL,
     `quantity` INT            NOT NULL DEFAULT '0',
     INDEX `fk_shoe_sizes_shoes1_idx` (`shoes_id` ASC) VISIBLE,
     CONSTRAINT `fk_shoe_sizes_shoes1`
@@ -433,14 +433,14 @@ CREATE TRIGGER check_size_exists
     ON shoe_sizes
     FOR EACH ROW
 BEGIN
-    DECLARE sizes DECIMAL;
+    DECLARE sizes INT;
 
-    SELECT size
-    INTO sizes
-    FROM shoe_sizes
-    WHERE shoes_id = NEW.shoes_id;
 
-    IF NEW.size IN (size) THEN
+
+    IF NEW.size IN (SELECT size
+                    FROM shoe_sizes
+                    WHERE shoes_id = NEW.shoes_id)
+    THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT =
                 'There is already size for this shoe. Change quantity';
     END IF;

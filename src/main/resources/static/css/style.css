@@ -937,7 +937,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 50px;
     border: 1px solid var(--baby-powder, #EFF0F2);
     position: relative;
-    z-index: 1;
+    z-index: 3;
 }
 
 .available__colors__list li a {
@@ -951,28 +951,22 @@ h1, h2, h3, h4, h5, h6 {
     display: block;
     width: 100%;
     height: 100%;
+    border: 1px solid #A0A0A0;
 }
 
 .available__colors__list li.active {
-    border: 1px solid var(--black, #111212);
+    border: 1px solid #8d8d8d;
 }
 
 .available__colors__list li.disabled {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+}
+.available__colors__list li.disabled a {
+    opacity: 50%;
+    background: rgba(116,116,116,0.15);
 }
 
-.available__colors__list li.disabled:after {
-    position: absolute;
-    content: '';
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    background-color: var(--baby-powder, #EFF0F2);
-    opacity: 40%;
-}
 
 .available__colors__list li:before {
     position: absolute;
@@ -992,8 +986,8 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .available__colors__list li:hover:before {
-
     visibility: visible;
+    opacity: 100%;
 }
 
 .product__size__container {
@@ -1120,6 +1114,9 @@ h1, h2, h3, h4, h5, h6 {
     margin: 15px 0 0 0;
     font-size: 20px;
     font-weight: 400;
+    text-align: justify;
+    text-justify: inter-word;
+    line-height: 156.4%;
 }
 
 /* add product */
@@ -1369,4 +1366,43 @@ option:checked {
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+}
+
+.product__not_found__container {
+
+}
+
+.product__not__found__img {
+    position: relative;
+    height: 45vh;
+}
+.product__not__found__img img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.product__not__found__content {
+    text-align: center;
+    margin: 10px;
+}
+
+.product__not__found__title {
+    font-weight: 700;
+    font-size: 32px;
+    padding: 0 0 10px 0;
+}
+
+.product__not__found__link a{
+    color: var(--black,#111212);
+    text-decoration-line: underline;
+    text-underline-offset: 5px;
+    transition-duration: 0.3s;
+}
+.product__not__found__link a:hover{
+    text-decoration-line: none;
+    transition-duration: 0.3s;
 }
