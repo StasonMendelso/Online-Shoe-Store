@@ -29,11 +29,30 @@ class CatalogControllerIT extends IntegrationTestBase {
                 .andExpect(status().isOk())
                 .andExpect(view().name("catalog/catalog"))
                 .andExpect(model().attribute("shoesList", hasSize(10)))
-                .andExpect(model().attribute("totalShoesNumber", 35L))
-                .andExpect(model().attribute("totalPageNumber", 4))
+                .andExpect(model().attribute("totalShoesNumber", 20L))
+                .andExpect(model().attribute("totalPageNumber", 2))
                 .andExpect(model().attribute("currentPageNumber", 1))
                 .andExpect(content().contentType("text/html;charset=UTF-8"))
                 .andExpect(MockMvcResultMatchers.cookie().doesNotExist("time"))
                 .andExpect(MockMvcResultMatchers.header().doesNotExist("sdf"));
+    }
+    @Test
+    void shouldReturnProductCardNotFound_whenProductNotFound() throws Exception {
+        mockMvc.perform(get("/catalog/100000"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("catalog/product_card_not_found"))
+                .andExpect(content().contentType("text/html;charset=UTF-8"))
+                .andExpect(model().hasNoErrors());
+
+    }
+    @Test
+    void shouldReturnProductCard_whenProductFound() throws Exception {
+        mockMvc.perform(get("/catalog/1"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("catalog/product_card"))
+                .andExpect(content().contentType("text/html;charset=UTF-8"))
+                .andExpect(model().hasNoErrors())
+                .andExpect(model().attributeExists("shoeSiblingColorList","shoeCardDto"));
+
     }
 }

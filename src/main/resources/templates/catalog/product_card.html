@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <meta th:replace="~{fragments::head-links}">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <header th:replace="~{fragments::header}"></header>
+    <main class="content">
+        <div class="content__container container">
+            <div class="product__card">
+                <div class="product__view__container">
+                    <div class="product__thumbnails__container swiper">
+
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <div class="swiper-slide product__thumbnails__swiper__slide" data-index="0">
+                                <img th:src="@{/img/photo_not_found.svg}">
+                            </div>
+                            <div class="swiper-slide product__thumbnails__swiper__slide" data-index="1">
+                                <img th:src="@{/img/photo_not_found.svg}">
+                            </div>
+                            <div class="swiper-slide product__thumbnails__swiper__slide" data-index="2">
+                                <img th:src="@{/img/photo_not_found.svg}">
+                            </div>
+                            <div class="swiper-slide product__thumbnails__swiper__slide" data-index="3">
+                                <img th:src="@{/img/photo_not_found.svg}">
+                            </div>
+                            <div class="swiper-slide product__thumbnails__swiper__slide" data-index="4">
+                                <img th:src="@{/img/photo_not_found.svg}">
+                            </div>
+                            <div class="swiper-slide product__thumbnails__swiper__slide" data-index="5">
+                                <img th:src="@{/img/photo_not_found.svg}">
+                            </div>
+                            <div class="swiper-slide product__thumbnails__swiper__slide" data-index="6">
+                                <img th:src="@{/img/photo_not_found.svg}">
+                            </div>
+                        </div>
+                        <div class="swiper-scrollbar product__thumbnails__swiper__scrollbar"></div>
+
+                    </div>
+                    <div class="product__swiper__wrapper swiper">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <div class="swiper-slide product__swiper__slide">
+                                <img th:src="@{/img/photo_not_found.svg}">
+                            </div>
+                            <div class="swiper-slide product__swiper__slide">
+                                <img th:src="@{/img/photo_not_found.svg}">
+                            </div>
+                            <div class="swiper-slide product__swiper__slide">
+                                <img th:src="@{/img/photo_not_found.svg}">
+                            </div>
+                            <div class="swiper-slide product__swiper__slide">
+                                <img th:src="@{/img/photo_not_found.svg}">
+                            </div>
+                            <div class="swiper-slide product__swiper__slide">
+                                <img th:src="@{/img/photo_not_found.svg}">
+                            </div>
+                            <div class="swiper-slide product__swiper__slide">
+                                <img th:src="@{/img/photo_not_found.svg}">
+                            </div>
+                            <div class="swiper-slide product__swiper__slide">
+                                <img th:src="@{/img/photo_not_found.svg}">
+                            </div>
+                        </div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev product__swiper-button-prev">
+                            <img th:src="@{/img/arrow-prev.svg}">
+                        </div>
+                        <div class="swiper-button-next product__swiper-button-next">
+                            <img th:src="@{/img/arrow-next.svg}">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="product__main__info__container">
+                    <div class="product__main__info__header">
+                        <span class="product__title" th:text="${shoeCardDto.getName()}">title</span>
+                        <span class="product__article">Код-товару: <span
+                                class="product__article__value"
+                                th:text="${shoeCardDto.getArticle()}">article</span></span>
+                        <span class="product__status product__status__available"
+                              th:text="${shoeCardDto.productStatus.getName()}"
+                              th:classappend="${shoeCardDto.getProductStatus() == ProductStatus_IN_AVAILABLE}? 'product\_\_status__available' : 'product\_\_status\_\_unavailable'">status</span>
+                    </div>
+                    <span class="product__price"><span class="product__price__value"
+                                                       th:text="${#numbers.formatDecimal(shoeCardDto.getPrice(),0,2)}">price</span> грн</span>
+                    <div class="available__colors__container">
+                        <span class="available__colors__text">Доступні кольори</span>
+                        <ul class="available__colors__list">
+                            <li th:class="${shoeColorStatusDto.getId()==shoeCardDto.getId()}?'active':''"
+                                th:classappend="${shoeColorStatusDto.getProductStatus() == ProductStatus_NOT_IN_AVAILABLE} ? 'disabled':''"
+                                th:attrprepend="data-color-name=${shoeColorStatusDto.productStatus == ProductStatus_NOT_IN_AVAILABLE}?'Немає в наявності' : ${shoeColorStatusDto.getColorDto().getName()}"
+                                th:each="shoeColorStatusDto : ${shoeSiblingColorList}">
+                                <a th:href="@{/catalog/{id}(id=${shoeColorStatusDto.getId()})}">
+                                    <span th:style="'background-color:'+ ${shoeColorStatusDto.getColorDto().getRgb()}"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="product__size__container">
+                        <span class="products__size__text">Доступні розміри</span>
+                        <div class="products__size__list">
+                            <button th:each="size :${shoeCardDto.getShoeSizeList()}" type="button"
+                                    name="productSize"
+                                    th:text="${size.getSize()}"
+                                    th:attrappend="data-description=${size.getQuantity() == 0}?'Немає в наявності':''"
+                                    th:disabled="${size.getQuantity() == 0}">size
+                            </button>
+                        </div>
+                        <script th:src="@{/js/catalog/productCard.js}"></script>
+                    </div>
+                </div>
+                <div class="product__characteristics__container">
+                    <div class="product__characteristic__title">Характеристики</div>
+                    <div class="product__characteristic__items">
+                        <ul class="product__characteristic__items__list">
+                            <li>
+                                <span class="product__characteristic__name">Назва моделі:</span>
+                                <span class="product__characteristic__value"
+                                      th:text="${shoeCardDto.getModel()}">model</span>
+                            </li>
+                            <li>
+                                <span class="product__characteristic__name">Бренд:</span>
+                                <span class="product__characteristic__value"
+                                      th:text="${shoeCardDto.getBrand()}">Brand</span>
+                            </li>
+                            <li>
+                                <span class="product__characteristic__name">Країна виробник:</span>
+                                <span class="product__characteristic__value"
+                                      th:text="${shoeCardDto.getManufacturerCountry()}">manufacturerCountry</span>
+                            </li>
+                            <li>
+                                <span class="product__characteristic__name">Сезонність:</span>
+                                <span class="product__characteristic__value"
+                                      th:text="${#strings.listJoin(shoeCardDto.getSeasonalitiesList(),'/')}">seasons</span>
+                            </li>
+                            <li>
+                                <span class="product__characteristic__name">Колір:</span>
+                                <span class="product__characteristic__value"
+                                      th:text="${shoeCardDto.getColor()}">color</span>
+                            </li>
+                            <li>
+                                <span class="product__characteristic__name">Стать:</span>
+                                <span class="product__characteristic__value"
+                                      th:text="${shoeCardDto.getSex()}">sex</span>
+                            </li>
+                            <li>
+                                <span class="product__characteristic__name">Матеріал підошви:</span>
+                                <span class="product__characteristic__value" th:text="${shoeCardDto.getSoleMaterial()}">soleMaterial</span>
+                            </li>
+                            <li>
+                                <span class="product__characteristic__name">Матеріал верху:</span>
+                                <span class="product__characteristic__value" th:text="${shoeCardDto.getTopMaterial()}">topMaterial</span>
+                            </li>
+                            <li>
+                                <span class="product__characteristic__name">Матеріал устилки:</span>
+                                <span class="product__characteristic__value"
+                                      th:text="${shoeCardDto.getInsoleMaterial()}">insoleMaterial</span>
+                            </li>
+                            <li>
+                                <span class="product__characteristic__name">Матеріал виробу:</span>
+                                <span class="product__characteristic__value"
+                                      th:text="${shoeCardDto.getProductMaterial()}">productMaterial</span>
+                            </li>
+                            <li>
+                                <span class="product__characteristic__name">Тип підошви:</span>
+                                <span class="product__characteristic__value" th:text="${shoeCardDto.getSoleType()}">soleType</span>
+                            </li>
+                            <li>
+                                <span class="product__characteristic__name">Висота каблука:</span>
+                                <span class="product__characteristic__value" th:text="${shoeCardDto.getHeelHeight()}">heelHeight</span>
+                            </li>
+                            <li>
+                                <span class="product__characteristic__name">Вид застібки:</span>
+                                <span class="product__characteristic__value" th:text="${shoeCardDto.getFastenerType()}">fastenerType</span>
+                            </li>
+                            <li>
+                                <span class="product__characteristic__name">Тип носка:</span>
+                                <span class="product__characteristic__value" th:text="${shoeCardDto.getSockType()}">sockType</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="product__characteristic__description" th:text="${shoeCardDto.getDescription()}">
+                        descriptionText
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer th:replace="~{fragments::footer}">
+    </footer>
+</div>
+</body>
+</html>

@@ -1,12 +1,9 @@
 package com.shoe.store.dto;
 
-import com.shoe.store.enums.ProductStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
 
 /**
  * @author Stanislav Hlova
@@ -15,9 +12,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ShoeCatalogItem {
-  private String id;
-  private BigDecimal price;
-  private String name;
-  private ProductStatus productStatus;
+public class ShoeSizeDto {
+    private Integer size;
+    private Integer quantity;
 }
