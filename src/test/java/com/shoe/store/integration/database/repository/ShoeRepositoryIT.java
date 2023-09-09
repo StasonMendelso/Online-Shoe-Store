@@ -20,8 +20,8 @@ class ShoeRepositoryIT extends IntegrationTestBase {
   private final ShoeRepository shoeRepository;
 
   @Test
-  void shouldReturnThirtyFiveEntities_whenFindAllCalled() {
-    final int expectedCount = 35;
+  void shouldReturnTwentyEntities_whenFindAllCalled() {
+    final int expectedCount = 20;
 
     List<Shoe> shoeList = shoeRepository.findAll();
 
