@@ -36,4 +36,23 @@ class CatalogControllerIT extends IntegrationTestBase {
                 .andExpect(MockMvcResultMatchers.cookie().doesNotExist("time"))
                 .andExpect(MockMvcResultMatchers.header().doesNotExist("sdf"));
     }
+    @Test
+    void shouldReturnProductCardNotFound_whenProductNotFound() throws Exception {
+        mockMvc.perform(get("/catalog/100000"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("catalog/product_card_not_found"))
+                .andExpect(content().contentType("text/html;charset=UTF-8"))
+                .andExpect(model().hasNoErrors());
+
+    }
+    @Test
+    void shouldReturnProductCard_whenProductFound() throws Exception {
+        mockMvc.perform(get("/catalog/1"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("catalog/product_card"))
+                .andExpect(content().contentType("text/html;charset=UTF-8"))
+                .andExpect(model().hasNoErrors())
+                .andExpect(model().attributeExists("shoeSiblingColorList","shoeCardDto"));
+
+    }
 }
