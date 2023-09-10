@@ -26,12 +26,13 @@ public class FileService {
     private final ShoeRepository shoeRepository;
 
     public Optional<FileSystemResource> getShoeFileByFileId(Long fileId) {
-        return fileRepository.findById(fileId).map(value -> getFileBytes(value.getRelativePath()))
-                .orElse(getDefaultProductFile());
+        return fileRepository.findById(fileId)
+                .flatMap(value -> getFileBytes(value.getRelativePath()))
+                .or(this::getDefaultProductFile);
     }
 
     @SneakyThrows
-    private Optional<FileSystemResource> getDefaultProductFile() {
+    public Optional<FileSystemResource> getDefaultProductFile() {
         return Optional.of(new FileSystemResource(fileProperties.getProductFileNotFoundPath()));
     }
 

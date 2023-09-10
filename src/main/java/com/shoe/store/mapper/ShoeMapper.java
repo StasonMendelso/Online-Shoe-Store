@@ -4,6 +4,7 @@ import com.shoe.store.dto.ShoeCardDto;
 import com.shoe.store.dto.ShoeCatalogItemDto;
 import com.shoe.store.model.shoe.Seasonality;
 import com.shoe.store.model.shoe.Shoe;
+import com.shoe.store.model.shoe.ShoeFile;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -33,10 +34,21 @@ public interface ShoeMapper {
     @Mapping(target = "color", source = "shoe.color.name")
     @Mapping(target = "seasonalitiesList", source = "shoe.seasonalityList", qualifiedByName = "seasonalityListToStringList")
     @Mapping(target = "shoeSizeList", source = "shoe.shoeSizeList")
+    @Mapping(target = "fileIdList", source = "shoe.shoeFileList", qualifiedByName = "fileListToIdList")
     ShoeCardDto toShoeCardDto(Shoe shoe);
 
     @Named("seasonalityListToStringList")
-    static List<String> map(List<Seasonality> seasonalityList) {
-        return seasonalityList.stream().map(Seasonality::getName).toList();
+    static List<String> mapSeasonalityList(List<Seasonality> seasonalityList) {
+        return seasonalityList.stream()
+                .map(Seasonality::getName)
+                .toList();
     }
+
+    @Named("fileListToIdList")
+    static List<String> mapShoeFileList(List<ShoeFile> shoeFileList) {
+        return shoeFileList.stream()
+                .map(shoeFile -> String.valueOf(shoeFile.getFile().getId()))
+                .toList();
+    }
+
 }

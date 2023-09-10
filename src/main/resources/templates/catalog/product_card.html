@@ -17,26 +17,15 @@
                         <!-- Additional required wrapper -->
                         <div class="swiper-wrapper">
                             <!-- Slides -->
-                            <div class="swiper-slide product__thumbnails__swiper__slide" data-index="0">
-                                <img th:src="@{/img/photo_not_found.svg}">
+                            <div th:each="fileId, index:${shoeCardDto.getFileIdList()}"
+                                 class="swiper-slide product__thumbnails__swiper__slide"
+                                 th:attr="data-index=${index.index}">
+                                <img th:src="@{/files/shoe/{id}(id=${fileId})}">
                             </div>
-                            <div class="swiper-slide product__thumbnails__swiper__slide" data-index="1">
-                                <img th:src="@{/img/photo_not_found.svg}">
-                            </div>
-                            <div class="swiper-slide product__thumbnails__swiper__slide" data-index="2">
-                                <img th:src="@{/img/photo_not_found.svg}">
-                            </div>
-                            <div class="swiper-slide product__thumbnails__swiper__slide" data-index="3">
-                                <img th:src="@{/img/photo_not_found.svg}">
-                            </div>
-                            <div class="swiper-slide product__thumbnails__swiper__slide" data-index="4">
-                                <img th:src="@{/img/photo_not_found.svg}">
-                            </div>
-                            <div class="swiper-slide product__thumbnails__swiper__slide" data-index="5">
-                                <img th:src="@{/img/photo_not_found.svg}">
-                            </div>
-                            <div class="swiper-slide product__thumbnails__swiper__slide" data-index="6">
-                                <img th:src="@{/img/photo_not_found.svg}">
+                            <div th:if="${shoeCardDto.getFileIdList().size()==0}"
+                                 class="swiper-slide product__thumbnails__swiper__slide"
+                                 data-index="0">
+                                <img th:src="@{/files/shoe/photo-not-found}">
                             </div>
                         </div>
                         <div class="swiper-scrollbar product__thumbnails__swiper__scrollbar"></div>
@@ -46,26 +35,13 @@
                         <!-- Additional required wrapper -->
                         <div class="swiper-wrapper">
                             <!-- Slides -->
-                            <div class="swiper-slide product__swiper__slide">
-                                <img th:src="@{/img/photo_not_found.svg}">
+                            <div th:each="fileId:${shoeCardDto.getFileIdList()}"
+                                 class="swiper-slide product__swiper__slide">
+                                <img th:src="@{/files/shoe/{id}(id=${fileId})}">
                             </div>
-                            <div class="swiper-slide product__swiper__slide">
-                                <img th:src="@{/img/photo_not_found.svg}">
-                            </div>
-                            <div class="swiper-slide product__swiper__slide">
-                                <img th:src="@{/img/photo_not_found.svg}">
-                            </div>
-                            <div class="swiper-slide product__swiper__slide">
-                                <img th:src="@{/img/photo_not_found.svg}">
-                            </div>
-                            <div class="swiper-slide product__swiper__slide">
-                                <img th:src="@{/img/photo_not_found.svg}">
-                            </div>
-                            <div class="swiper-slide product__swiper__slide">
-                                <img th:src="@{/img/photo_not_found.svg}">
-                            </div>
-                            <div class="swiper-slide product__swiper__slide">
-                                <img th:src="@{/img/photo_not_found.svg}">
+                            <div th:if="${shoeCardDto.getFileIdList().size()==0}"
+                                 class="swiper-slide product__swiper__slide">
+                                <img th:src="@{/files/shoe/photo-not-found}">
                             </div>
                         </div>
 

@@ -17,7 +17,7 @@
         <div class="catalog__items" th:if="${totalShoesNumber!=0}">
           <div th:each="item:${shoesList}" class="catalog__item" th:classappend="${item.getProductStatus() == T(com.shoe.store.enums.ProductStatus).NOT_IN_AVAILABLE}? 'catalog\_\_item\_\_not\_\_available' : ''">
             <a th:href="@{/catalog/{id}(id=${item.id})}" class="item__image">
-              <img th:src="@{/img/photo_not_found.svg}">
+              <img th:src="@{/files/shoe/{id}/main(id=${item.id})}">
             </a>
             <div class="item__content">
               <span class="item__price"><span class="item__price__number" th:text="${#numbers.formatDecimal(item.getPrice(),0,2)}">0</span> грн</span>
