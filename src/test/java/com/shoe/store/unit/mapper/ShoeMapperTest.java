@@ -5,6 +5,7 @@ import com.shoe.store.dto.ShoeCatalogItemDto;
 import com.shoe.store.dto.ShoeSizeDto;
 import com.shoe.store.enums.ProductStatus;
 import com.shoe.store.mapper.ShoeMapper;
+import com.shoe.store.model.file.File;
 import com.shoe.store.model.shoe.Brand;
 import com.shoe.store.model.shoe.Color;
 import com.shoe.store.model.shoe.FastenerType;
@@ -15,6 +16,7 @@ import com.shoe.store.model.shoe.ProductMaterial;
 import com.shoe.store.model.shoe.Seasonality;
 import com.shoe.store.model.shoe.Sex;
 import com.shoe.store.model.shoe.Shoe;
+import com.shoe.store.model.shoe.ShoeFile;
 import com.shoe.store.model.shoe.ShoeSize;
 import com.shoe.store.model.shoe.SockType;
 import com.shoe.store.model.shoe.SoleMaterial;
@@ -87,6 +89,10 @@ class ShoeMapperTest extends BaseUnitTest {
                         .build())
                 .seasonalityList(List.of(Seasonality.builder().name("season1").build(), Seasonality.builder().name("season2").build(), Seasonality.builder().name("season3").build()))
                 .model("model1")
+                .shoeFileList(List.of(ShoeFile.builder()
+                        .file(File.builder()
+                                .id(1L).build())
+                        .build()))
                 .build();
     }
 
@@ -134,6 +140,9 @@ class ShoeMapperTest extends BaseUnitTest {
                         .map(Seasonality::getName)
                         .toList())
                 .model(shoeInstance.getModel())
+                .fileIdList(shoeInstance.getShoeFileList().stream()
+                        .map(shoeFile -> String.valueOf(shoeFile.getFile().getId()))
+                        .toList())
                 .build();
 
         ShoeCardDto actualDto = shoeMapper.toShoeCardDto(shoeInstance);
@@ -145,7 +154,7 @@ class ShoeMapperTest extends BaseUnitTest {
     void shouldReturnEmptyStringList_whenSeasonalityEmptyListPassed() {
         final int expectedSize = 0;
 
-        final List<String> actual = ShoeMapper.map(Collections.emptyList());
+        final List<String> actual = ShoeMapper.mapSeasonalityList(Collections.emptyList());
 
         assertEquals(Collections.emptyList(), actual);
         assertEquals(expectedSize, actual.size());
@@ -156,7 +165,7 @@ class ShoeMapperTest extends BaseUnitTest {
         final List<String> expectedList = List.of("Season1", "Season2", "Season3");
         final int expectedSize = expectedList.size();
 
-        final List<String> actual = ShoeMapper.map(expectedList.stream()
+        final List<String> actual = ShoeMapper.mapSeasonalityList(expectedList.stream()
                 .map(value -> Seasonality.builder().name(value).build())
                 .toList());
 
