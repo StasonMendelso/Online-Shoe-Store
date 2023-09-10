@@ -2,15 +2,19 @@ package com.shoe.store.integration.database.repository;
 
 import com.shoe.store.database.repository.ShoeRepository;
 import com.shoe.store.integration.IntegrationTestBase;
+import com.shoe.store.model.file.File;
 import com.shoe.store.model.shoe.Shoe;
+import com.shoe.store.model.shoe.ShoeFile;
 import lombok.AllArgsConstructor;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Stanislav Hlova
@@ -84,5 +88,26 @@ class ShoeRepositoryIT extends IntegrationTestBase {
 
         assertTrue(shoesId.contains(id), "List doesn't contain id, by which sampling was taken: " + shoesId);
         assertEquals(expectedSize, shoesId.size());
+    }
+
+    @Test
+    void shouldReturnShoeWithOneFile_whenOneFilePresent() {
+        final Long id = 1L;
+
+        Optional<Shoe> optionalShoe = shoeRepository.findById(id);
+
+        assertTrue(optionalShoe.isPresent());
+
+        Shoe shoe = optionalShoe.get();
+        ShoeFile shoeFile = shoe.getShoeFileList().get(0);
+        File file =shoeFile.getFile();
+        assertNotNull(shoe.getShoeFileList());
+        assertEquals(2, shoe.getShoeFileList().size());
+        assertTrue(shoeFile.isMainPhoto());
+        assertEquals(1,shoeFile.getSequenceNumber());
+        assertEquals(1,file.getId());
+        assertEquals("1",file.getName());
+        assertEquals("shoes/1.jpg",file.getRelativePath());
+        assertEquals("jpg",file.getFileExtension().getExtension());
     }
 }

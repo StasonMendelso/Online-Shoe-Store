@@ -45,7 +45,7 @@ public class Shoe {
     @Column(name = "price", nullable = false)
     private BigDecimal price;
 
-    @Column(name = "product_status", nullable = false)
+    @Column(name = "product_status",columnDefinition = "ENUM",nullable = false)
     @Convert(converter = ProductStatusConverter.class)
     private ProductStatus productStatus;
 
@@ -119,4 +119,8 @@ public class Shoe {
     @ElementCollection
     @CollectionTable(name = "shoe_sizes", joinColumns = @JoinColumn(name = "shoes_id"))
     private List<ShoeSize> shoeSizeList;
+
+    @ElementCollection
+    @CollectionTable(name = "shoe_files", joinColumns = @JoinColumn(name = "shoes_id"))
+    private List<ShoeFile> shoeFileList;
 }

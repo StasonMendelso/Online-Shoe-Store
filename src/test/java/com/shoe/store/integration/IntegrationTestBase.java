@@ -8,6 +8,8 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.testcontainers.containers.MySQLContainer;
 
+import java.util.List;
+
 /**
  * @author Stanislav Hlova
  */
@@ -24,6 +26,7 @@ public abstract class IntegrationTestBase {
 
   @BeforeAll
   public static void runContainer() {
+    container.setPortBindings(List.of("65500:3306"));
     container.start();
   }
   @DynamicPropertySource

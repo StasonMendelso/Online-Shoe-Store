@@ -9,3 +9,7 @@ spring:
 server:
   servlet:
     context-path: /lena-shoes
+app:
+  file:
+    bucket: D:\MyProjects\Works.Account\Online Shoe Store. Files storage
+    product-file-not-found-path: src/main/resources/static/img/photo_not_found.svg

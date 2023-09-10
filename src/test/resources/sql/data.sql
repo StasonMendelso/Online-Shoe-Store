@@ -296,3 +296,11 @@ VALUES (1, 35, 0),
        (20, 37, 1),
        (20, 38, 3),
        (20, 39, 2);
+INSERT INTO file_extensions(id, name)
+VALUES (1, 'jpg');
+INSERT INTO files(id, name, file_extensions_id, relative_path)
+VALUES (1, '1', 1, 'shoes/1.jpg'),
+       (2, '2', 1, 'shoes/2.jpg');
+INSERT INTO shoe_files(shoes_id, files_id, main_photo, sequence_number)
+VALUES (1, 1, 1, 1),
+       (1, 2, 0, 2);
