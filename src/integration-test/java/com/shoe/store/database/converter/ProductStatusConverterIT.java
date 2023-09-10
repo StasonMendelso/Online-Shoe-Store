@@ -1,19 +1,18 @@
-package com.shoe.store.integration.database.converter;
+package com.shoe.store.database.converter;
 
+import com.shoe.store.enums.ProductStatus;
+import jakarta.persistence.EntityManager;
+import lombok.RequiredArgsConstructor;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
 
-import com.shoe.store.database.converter.ProductStatusConverter;
-import com.shoe.store.enums.ProductStatus;
-import com.shoe.store.integration.IntegrationTestBase;
-import jakarta.persistence.EntityManager;
+import com.shoe.store.IntegrationTestBase;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import lombok.RequiredArgsConstructor;
-import org.junit.jupiter.api.Test;
 
 /**
  * @author Stanislav Hlova

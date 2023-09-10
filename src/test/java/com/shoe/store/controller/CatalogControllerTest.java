@@ -1,6 +1,6 @@
-package com.shoe.store.unit.controller;
+package com.shoe.store.controller;
 
-import com.shoe.store.controller.CatalogController;
+import com.shoe.store.BaseUnitTest;
 import com.shoe.store.dto.ShoeCardDto;
 import com.shoe.store.dto.ShoeCatalogItemDto;
 import com.shoe.store.dto.ShoeColorStatusDto;
@@ -8,7 +8,6 @@ import com.shoe.store.mapper.ShoeColorStatusMapper;
 import com.shoe.store.mapper.ShoeMapper;
 import com.shoe.store.model.shoe.Shoe;
 import com.shoe.store.service.ShoeService;
-import com.shoe.store.unit.BaseUnitTest;
 import com.shoe.store.validation.validator.PageValidator;
 import com.shoe.store.validation.validator.SizePerPageValidator;
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -1,6 +1,5 @@
-package com.shoe.store.integration;
+package com.shoe.store;
 
-import com.shoe.store.integration.annotation.IntegrationTest;
 import org.junit.jupiter.api.BeforeAll;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.DynamicPropertyRegistry;
@@ -8,6 +7,7 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.testcontainers.containers.MySQLContainer;
 
+import com.shoe.store.annotation.IntegrationTest;
 import java.util.List;
 
 /**

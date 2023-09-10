@@ -1,4 +1,4 @@
-package com.shoe.store.unit;
+package com.shoe.store;
 
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;

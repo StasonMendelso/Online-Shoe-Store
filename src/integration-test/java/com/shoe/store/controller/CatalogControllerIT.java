@@ -1,6 +1,5 @@
-package com.shoe.store.integration.controller;
+package com.shoe.store.controller;
 
-import com.shoe.store.integration.IntegrationTestBase;
 import lombok.RequiredArgsConstructor;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import org.junit.jupiter.api.Test;
@@ -11,6 +10,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+
+import com.shoe.store.IntegrationTestBase;
 
 /**
  * @author Stanislav Hlova

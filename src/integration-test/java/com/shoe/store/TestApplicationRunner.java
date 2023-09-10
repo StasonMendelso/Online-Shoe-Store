@@ -1,4 +1,4 @@
-package com.shoe.store.integration;
+package com.shoe.store;
 
 import org.springframework.boot.test.context.TestConfiguration;
 

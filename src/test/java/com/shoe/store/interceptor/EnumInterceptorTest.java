@@ -1,8 +1,7 @@
-package com.shoe.store.unit.interceptor;
+package com.shoe.store.interceptor;
 
+import com.shoe.store.BaseUnitTest;
 import com.shoe.store.enums.ProductStatus;
-import com.shoe.store.interceptor.EnumInterceptor;
-import com.shoe.store.unit.BaseUnitTest;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;

@@ -1,10 +1,9 @@
-package com.shoe.store.unit.service;
+package com.shoe.store.service;
 
 import com.shoe.store.config.FileProperties;
 import com.shoe.store.database.repository.FileRepository;
 import com.shoe.store.database.repository.ShoeRepository;
-import com.shoe.store.service.FileService;
-import com.shoe.store.unit.BaseUnitTest;
+import com.shoe.store.BaseUnitTest;
 import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -70,6 +69,5 @@ class FileServiceTest extends BaseUnitTest {
             assertEquals(Files.size(defaultFilePath), resource.getFile().length());
             assertArrayEquals(Files.readAllBytes(defaultFilePath), resource.getContentAsByteArray());
         });
-
     }
 }

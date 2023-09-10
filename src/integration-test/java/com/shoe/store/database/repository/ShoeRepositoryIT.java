@@ -1,7 +1,5 @@
-package com.shoe.store.integration.database.repository;
+package com.shoe.store.database.repository;
 
-import com.shoe.store.database.repository.ShoeRepository;
-import com.shoe.store.integration.IntegrationTestBase;
 import com.shoe.store.model.file.File;
 import com.shoe.store.model.shoe.Shoe;
 import com.shoe.store.model.shoe.ShoeFile;
@@ -15,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
+import com.shoe.store.IntegrationTestBase;
 import java.util.List;
 import java.util.Optional;
 

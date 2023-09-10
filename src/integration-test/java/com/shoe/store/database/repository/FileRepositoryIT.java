@@ -1,7 +1,5 @@
-package com.shoe.store.integration.database.repository;
+package com.shoe.store.database.repository;
 
-import com.shoe.store.database.repository.FileRepository;
-import com.shoe.store.integration.IntegrationTestBase;
 import com.shoe.store.model.file.File;
 import com.shoe.store.model.file.FileExtension;
 import lombok.AllArgsConstructor;
@@ -9,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
+import com.shoe.store.IntegrationTestBase;
 import java.util.Optional;
 
 /**

@@ -1,10 +1,9 @@
-package com.shoe.store.unit.mapper;
+package com.shoe.store.mapper;
 
 import com.shoe.store.dto.ShoeCardDto;
 import com.shoe.store.dto.ShoeCatalogItemDto;
 import com.shoe.store.dto.ShoeSizeDto;
 import com.shoe.store.enums.ProductStatus;
-import com.shoe.store.mapper.ShoeMapper;
 import com.shoe.store.model.file.File;
 import com.shoe.store.model.shoe.Brand;
 import com.shoe.store.model.shoe.Color;
@@ -22,7 +21,7 @@ import com.shoe.store.model.shoe.SockType;
 import com.shoe.store.model.shoe.SoleMaterial;
 import com.shoe.store.model.shoe.SoleType;
 import com.shoe.store.model.shoe.TopMaterial;
-import com.shoe.store.unit.BaseUnitTest;
+import com.shoe.store.BaseUnitTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

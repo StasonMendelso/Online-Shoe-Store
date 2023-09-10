@@ -1,9 +1,8 @@
-package com.shoe.store.unit.service;
+package com.shoe.store.service;
 
 import com.shoe.store.database.repository.ShoeRepository;
 import com.shoe.store.model.shoe.Shoe;
-import com.shoe.store.service.ShoeService;
-import com.shoe.store.unit.BaseUnitTest;
+import com.shoe.store.BaseUnitTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;

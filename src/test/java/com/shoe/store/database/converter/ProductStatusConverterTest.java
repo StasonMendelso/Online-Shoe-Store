@@ -1,11 +1,10 @@
-package com.shoe.store.unit.database.converter;
+package com.shoe.store.database.converter;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.shoe.store.database.converter.ProductStatusConverter;
 import com.shoe.store.enums.ProductStatus;
-import com.shoe.store.unit.BaseUnitTest;
+import com.shoe.store.BaseUnitTest;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 

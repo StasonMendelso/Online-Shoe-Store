@@ -1,9 +1,8 @@
-package com.shoe.store.unit.mapper;
+package com.shoe.store.mapper;
 
 import com.shoe.store.dto.ColorDto;
-import com.shoe.store.mapper.ColorMapper;
 import com.shoe.store.model.shoe.Color;
-import com.shoe.store.unit.BaseUnitTest;
+import com.shoe.store.BaseUnitTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

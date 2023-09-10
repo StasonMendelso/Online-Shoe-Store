@@ -1,14 +1,11 @@
-package com.shoe.store.unit.mapper;
+package com.shoe.store.mapper;
 
 import com.shoe.store.dto.ColorDto;
 import com.shoe.store.dto.ShoeColorStatusDto;
 import com.shoe.store.enums.ProductStatus;
-import com.shoe.store.mapper.ColorMapperImpl;
-import com.shoe.store.mapper.ShoeColorStatusMapper;
-import com.shoe.store.mapper.ShoeColorStatusMapperImpl;
 import com.shoe.store.model.shoe.Color;
 import com.shoe.store.model.shoe.Shoe;
-import com.shoe.store.unit.BaseUnitTest;
+import com.shoe.store.BaseUnitTest;
 import lombok.RequiredArgsConstructor;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
