@@ -30,14 +30,16 @@ public class FileService {
                 .flatMap(value -> getFileBytes(value.getRelativePath()))
                 .or(this::getDefaultProductFile);
     }
-
-    @SneakyThrows
+    public Optional<FileSystemResource> getMainShoeFileById(Long shoeId) {
+        return shoeRepository.findMainPhotoIdByShoeId(shoeId)
+                .flatMap(this::getShoeFileByFileId)
+                .or(this::getDefaultProductFile);
+    }
     public Optional<FileSystemResource> getDefaultProductFile() {
         return Optional.of(new FileSystemResource(fileProperties.getProductFileNotFoundPath()));
     }
 
-    @SneakyThrows
-    private Optional<FileSystemResource> getFileBytes(String fileRelativePath) {
+    protected Optional<FileSystemResource> getFileBytes(String fileRelativePath) {
         Path fullFilePath = fileProperties.getBucket().resolve(fileRelativePath);
 
         return Files.exists(fullFilePath) ? Optional.of(new FileSystemResource(fullFilePath)) : Optional.empty();
@@ -48,9 +50,5 @@ public class FileService {
         return Files.probeContentType(Path.of(path));
     }
 
-    public Optional<FileSystemResource> getMainShoeFileById(Long shoeId) {
-        return shoeRepository.findMainPhotoIdByShoeId(shoeId)
-                .flatMap(this::getShoeFileByFileId)
-                .or(this::getDefaultProductFile);
-    }
+
 }

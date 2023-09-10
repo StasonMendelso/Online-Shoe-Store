@@ -15,7 +15,7 @@ import java.util.List;
  */
 @IntegrationTest
 @Sql(scripts = "classpath:sql/data.sql")
-@WithMockUser(username = "test@gmail.com", password = "test",authorities = {"ADMIN", "USER"})
+@WithMockUser(username = "test@gmail.com", password = "data",authorities = {"ADMIN", "USER"})
 public abstract class IntegrationTestBase {
 
   private static final MySQLContainer<?> container = new MySQLContainer<>("mysql:8.0.31")

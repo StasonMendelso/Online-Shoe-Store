@@ -6,7 +6,9 @@ import com.shoe.store.model.file.File;
 import com.shoe.store.model.shoe.Shoe;
 import com.shoe.store.model.shoe.ShoeFile;
 import lombok.AllArgsConstructor;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
@@ -99,15 +101,47 @@ class ShoeRepositoryIT extends IntegrationTestBase {
         assertTrue(optionalShoe.isPresent());
 
         Shoe shoe = optionalShoe.get();
-        ShoeFile shoeFile = shoe.getShoeFileList().get(0);
-        File file =shoeFile.getFile();
-        assertNotNull(shoe.getShoeFileList());
-        assertEquals(2, shoe.getShoeFileList().size());
-        assertTrue(shoeFile.isMainPhoto());
-        assertEquals(1,shoeFile.getSequenceNumber());
-        assertEquals(1,file.getId());
-        assertEquals("1",file.getName());
-        assertEquals("shoes/1.jpg",file.getRelativePath());
-        assertEquals("jpg",file.getFileExtension().getExtension());
+        ShoeFile shoeFile1 = shoe.getShoeFileList().get(0);
+        File file1 = shoeFile1.getFile();
+        ShoeFile shoeFile2 = shoe.getShoeFileList().get(1);
+        File file2 = shoeFile2.getFile();
+        assertAll(() -> {
+            assertNotNull(shoe.getShoeFileList());
+            assertEquals(2, shoe.getShoeFileList().size());
+
+            assertTrue(shoeFile1.isMainPhoto());
+            assertEquals(1, shoeFile1.getSequenceNumber());
+            assertEquals(1, file1.getId());
+            assertEquals("1_1", file1.getName());
+            assertEquals("shoes/1_1.jpg", file1.getRelativePath());
+            assertEquals("jpg", file1.getFileExtension().getExtension());
+
+            assertFalse(shoeFile2.isMainPhoto());
+            assertEquals(2, shoeFile2.getSequenceNumber());
+            assertEquals(2, file2.getId());
+            assertEquals("1_2", file2.getName());
+            assertEquals("shoes/1_2.jpg", file2.getRelativePath());
+            assertEquals("jpg", file2.getFileExtension().getExtension());
+        });
+    }
+
+    @Test
+    void shouldReturnMainFileId_whenMainFilePersisted() {
+        final Long id = 1L;
+        final Long expected = 1L;
+
+        Optional<Long> actual = shoeRepository.findMainPhotoIdByShoeId(id);
+
+        assertTrue(actual.isPresent());
+        assertEquals(expected, actual.get());
+    }
+
+    @Test
+    void shouldReturnEmptyMainPhotoId_whenMainFileNotPersisted() {
+        final Long id = -1L;
+
+        Optional<Long> actual = shoeRepository.findMainPhotoIdByShoeId(id);
+
+        assertTrue(actual.isEmpty());
     }
 }
