@@ -6,3 +6,10 @@ spring:
     properties:
       hibernate:
         format_sql: true
+logging:
+  level:
+    com.test: DEBUG
+app:
+  file:
+    product-file-not-found-path: src/test-integration/resources/data/1_1.jpg
+    bucket: src/test-integration/resources/data
