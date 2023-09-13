@@ -16,3 +16,27 @@ ALTER TABLE shoes
     DROP COLUMN product_status_id;
 
 DROP TABLE product_status;
+-- changeset Modify column type in files table table:2
+ALTER TABLE shoe_files
+    DROP FOREIGN KEY fk_shoe_files_files1;
+
+ALTER TABLE files
+    MODIFY COLUMN id BIGINT NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE shoe_files
+    MODIFY COLUMN files_id BIGINT NOT NULL;
+
+ALTER TABLE shoe_files
+    ADD CONSTRAINT `fk_shoe_files_files` FOREIGN KEY (files_id) REFERENCES files (id);
+-- changeset Modify column type in sex table table:3
+ALTER TABLE shoes
+    DROP FOREIGN KEY fk_shoes_sex1;
+
+ALTER TABLE sex
+    MODIFY COLUMN id BIGINT NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE shoes
+    MODIFY COLUMN sex_id BIGINT NOT NULL;
+
+ALTER TABLE shoes
+    ADD CONSTRAINT `fk_shoes_sex` FOREIGN KEY (sex_id) REFERENCES sex (id);

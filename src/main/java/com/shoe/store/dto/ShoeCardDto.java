@@ -38,5 +38,6 @@ public class ShoeCardDto {
     private String sockType;
     private String description;
     private List<ShoeSizeDto> shoeSizeList;
+    private List<String> fileIdList;
 
 }
