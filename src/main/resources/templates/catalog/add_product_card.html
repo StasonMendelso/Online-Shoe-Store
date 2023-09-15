@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta th:replace="~{fragments::head-links}">
+</head>
+<body>
+<div class="wrapper">
+    <header th:replace="~{fragments::header}"></header>
+    <main class="content">
+        <div class="content__container container">
+            <div class="add__product__container">
+                <div class="add__product__header">
+                    <span class="add__product__label">Додавання нового товару</span>
+                </div>
+                <form th:action="@{/catalog}" th:method="POST" th:object="${createShoeCardDto}"
+                      enctype="multipart/form-data" class="add__product__form">
+                    <div class="add__product__input__row add__product__simple__input__row">
+                        <label for="product__name__input" class="input__label">Назва в каталозі</label>
+                        <input type="text" th:field="*{name}" id="product__name__input">
+                    </div>
+                    <div class="add__product__input__row add__product__simple__input__row">
+                        <label for="product__model__name__input" class="input__label">Назва моделі</label>
+                        <input type="text" th:field="*{model}" id="product__model__name__input">
+                    </div>
+                    <div class="add__product__input__row add__product__simple__input__row">
+                        <label for="product__vendor__input" class="input__label">Артикул</label>
+                        <input type="text" th:field="*{article}" id="product__vendor__input">
+                    </div>
+                    <div class="add__product__input__row add__product__simple__input__row">
+                        <label for="product__price__input" class="input__label">Ціна</label>
+                        <input type="text" th:field="*{price}" id="product__price__input">
+                    </div>
+                    <div class="add__product__input__row add__product__simple__input__row">
+                        <label for="product__description__input" class="input__label">Опис</label>
+                        <textarea th:field="*{description}" id="product__description__input"></textarea>
+                    </div>
+                    <div class="add__product__input__row add__product__select__row">
+                        <label for="product__sex__input" class="input__label">Стать</label>
+                        <select th:field="*{sex}" id="product__sex__input">
+                            <option th:each="sex : ${shoeCharacteristic.getSexList()}" th:value="${sex}"
+                                    th:text="${sex}">Стать
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="add__product__input__row add__product__select__with__button__row">
+                        <label for="product__brand__input" class="input__label">Бренд</label>
+                        <select th:field="*{brand}" id="product__brand__input">
+                            <option th:each="brand : ${shoeCharacteristic.getBrandList()}" th:value="${brand}"
+                                    th:text="${brand}">Бренд
+                            </option>
+                        </select>
+                        <button type="button" class="add__product__characteristic__button">
+                            <img th:src="@{/img/plus.svg}">
+                        </button>
+                    </div>
+                    <div class="add__product__input__row add__product__new__characteristic__input__row">
+                        <label class="input__label">Назва нового бренду</label>
+                        <div>
+                            <div><input type="text" name=""></div>
+                            <span class="success hidden">Назва нового бренду було додано</span>
+                            <span class="error hidden">Назва нового бренду не додано</span>
+                        </div>
+                        <button type="button" class="accent__button">
+                            Додати
+                        </button>
+                    </div>
+                    <div class="add__product__input__row add__product__select__with__button__row">
+                        <label for="product__manufacture__country__input" class="input__label">Країна
+                            виробника</label>
+                        <select th:field="*{manufacturerCountry}" id="product__manufacture__country__input">
+                            <option th:each="manufacturerCountry : ${shoeCharacteristic.getManufacturerCountryList()}"
+                                    th:value="${manufacturerCountry}" th:text="${manufacturerCountry}">Країна виробника
+                            </option>
+                        </select>
+                        <button type="button" class="add__product__characteristic__button">
+                            <img th:src="@{/img/plus.svg}">
+                        </button>
+                    </div>
+                    <div class="add__product__input__row add__product__select__with__button__row">
+                        <label for="product-sole-material-input" class="input__label">Матеріал підошви</label>
+                        <select th:field="*{soleMaterial}" id="product-sole-material-input">
+                            <option th:each="soleMaterial : ${shoeCharacteristic.getSoleMaterialList()}"
+                                    th:value="${soleMaterial}" th:text="${soleMaterial}"></option>
+                        </select>
+                        <button type="button" class="add__product__characteristic__button">
+                            <img th:src="@{/img/plus.svg}">
+                        </button>
+                    </div>
+                    <div class="add__product__input__row add__product__select__with__button__row">
+                        <label for="product-top-material-input" class="input__label">Матеріал верху</label>
+                        <select th:field="*{topMaterial}" id="product-top-material-input">
+                            <option th:each="topMaterial : ${shoeCharacteristic.getTopMaterialList()}"
+                                    th:value="${topMaterial}" th:text="${topMaterial}"></option>
+                        </select>
+                        <button type="button" class="add__product__characteristic__button">
+                            <img th:src="@{/img/plus.svg}">
+                        </button>
+                    </div>
+                    <div class="add__product__input__row add__product__select__with__button__row">
+                        <label for="product-insole-material-input" class="input__label">Матеріал устилки</label>
+                        <select th:field="*{insoleMaterial}" id="product-insole-material-input">
+                            <option th:each="insoleMaterial : ${shoeCharacteristic.getInsoleMaterialList()}"
+                                    th:value="${insoleMaterial}" th:text="${insoleMaterial}"></option>
+                        </select>
+                        <button type="button" class="add__product__characteristic__button">
+                            <img th:src="@{/img/plus.svg}">
+                        </button>
+                    </div>
+                    <div class="add__product__input__row add__product__select__with__button__row">
+                        <label for="product-material-input" class="input__label">Матеріал виробу</label>
+                        <select th:field="*{productMaterial}" id="product-material-input">
+                            <option th:each="productMaterial : ${shoeCharacteristic.getProductMaterialList()}"
+                                    th:value="${productMaterial}" th:text="${productMaterial}"></option>
+                        </select>
+                        <button type="button" class="add__product__characteristic__button">
+                            <img th:src="@{/img/plus.svg}">
+                        </button>
+                    </div>
+                    <div class="add__product__input__row add__product__select__with__button__row">
+                        <label for="product-sole-type-input" class="input__label">Тип підошви</label>
+                        <select th:field="*{soleType}" id="product-sole-type-input">
+                            <option th:each="soleType : ${shoeCharacteristic.getSoleTypeList()}" th:value="${soleType}"
+                                    th:text="${soleType}"></option>
+                        </select>
+                        <button type="button" class="add__product__characteristic__button">
+                            <img th:src="@{/img/plus.svg}">
+                        </button>
+                    </div>
+                    <div class="add__product__input__row add__product__select__with__button__row">
+                        <label for="product-heel-height-input" class="input__label">Висота каблука</label>
+                        <select th:field="*{heelHeight}" id="product-heel-height-input">
+                            <option th:each="heelHeight : ${shoeCharacteristic.getHeelHeightList()}"
+                                    th:value="${heelHeight}" th:text="${heelHeight}"></option>
+                        </select>
+                        <button type="button" class="add__product__characteristic__button">
+                            <img th:src="@{/img/plus.svg}">
+                        </button>
+                    </div>
+                    <div class="add__product__input__row add__product__select__with__button__row">
+                        <label for="product-fastener-type-input" class="input__label">Вид застібки</label>
+                        <select th:field="*{fastenerType}" id="product-fastener-type-input">
+                            <option th:each="fastenerType : ${shoeCharacteristic.getFastenerTypeList()}"
+                                    th:value="${fastenerType}" th:text="${fastenerType}"></option>
+                        </select>
+                        <button type="button" class="add__product__characteristic__button">
+                            <img th:src="@{/img/plus.svg}">
+                        </button>
+                    </div>
+                    <div class="add__product__input__row add__product__select__with__button__row">
+                        <label for="product-sock-type-input" class="input__label">Тип носка</label>
+                        <select th:field="*{sockType}" id="product-sock-type-input">
+                            <option th:each="sockType : ${shoeCharacteristic.getSockTypeList()}" th:value="${sockType}"
+                                    th:text="${sockType}"></option>
+                        </select>
+                        <button type="button" class="add__product__characteristic__button">
+                            <img th:src="@{/img/plus.svg}">
+                        </button>
+                    </div>
+                    <div class="add__product__input__row add__product__select__with__button__row">
+                        <label for="product-category-input" class="input__label">Категорія</label>
+                        <select th:field="*{category}" id="product-category-input">
+                            <option th:each="category : ${shoeCharacteristic.getCategoryList()}" th:value="${category}"
+                                    th:text="${category}"></option>
+                        </select>
+                        <button type="button" class="add__product__characteristic__button">
+                            <img th:src="@{/img/plus.svg}">
+                        </button>
+                    </div>
+                    <div class="add__product__input__row add__product__select__with__button__row">
+                        <label for="product-color-input" class="input__label">Колір</label>
+                        <select th:field="*{color}" id="product-color-input">
+                            <option th:each="color : ${shoeCharacteristic.getColorList()}" th:value="${color}"
+                                    th:text="${color}"></option>
+                        </select>
+                        <button type="button" class="add__product__characteristic__button">
+                            <img th:src="@{/img/plus.svg}">
+                        </button>
+                    </div>
+                    <div class="add__product__input__row add__product__new__color__row">
+                        <label class="input__label">Назва нового кольору</label>
+                        <div>
+                            <input name="">
+                            <span class="success hidden">Новий колір було додано</span>
+                            <span class="error hidden">Новий колір не додано</span>
+                        </div>
+                        <label class="input__label">Виберіть відповідний колір з палітри</label>
+                        <input type="color">
+                        <button type="button" class="accent__button">
+                            Додати
+                        </button>
+                    </div>
+                    <div class="add__product__input__row add__product__season__checkbox__row">
+                        <span class="input__label">Сезонність</span>
+                        <div class="add__product__checkbox__option"
+                             th:each="seasonality : ${shoeCharacteristic.getSeasonalityList()}">
+                            <input type="checkbox" th:id="${seasonality}" th:value="${seasonality}"
+                                   th:field="*{seasonalitiesList}">
+                            <label th:for="${seasonality}" th:text="${seasonality}">Літо</label>
+                        </div>
+                    </div>
+                    <div class="add__product__size__container">
+                        <div class="add__product__size__container__title title">
+                            <span>Розміри</span>
+                        </div>
+                        <div class="add__product__size__table__container">
+                            <table class="add__product__size__table">
+                                <thead>
+                                <tr>
+                                    <td>№</td>
+                                    <td>Розмір</td>
+                                    <td>Кількість</td>
+                                    <td></td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tbody th:if="*{shoeSizeList == null || shoeSizeList.isEmpty()}">
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <input type="number" name="size">
+                                    </td>
+                                    <td>
+                                        <input type="number" name="quantity">
+                                    </td>
+                                    <td>
+                                        <button type="button"
+                                                class="accent__button add__product__size__delete__button">Видалити
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>
+                                        <input type="number" name="size">
+                                    </td>
+                                    <td>
+                                        <input type="number" name="quantity">
+                                    </td>
+                                    <td>
+                                        <button type="button"
+                                                class="accent__button add__product__size__delete__button">Видалити
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tbody th:if="*{shoeSizeList != null && !shoeSizeList.isEmpty()}">
+                                <tr th:each="shoeSize, index : *{shoeSizeList}">
+                                    <td th:text="${index.index+1}">0</td>
+                                    <td>
+                                        <input type="number" name="size" th:value="${shoeSize.getSize()}">
+                                    </td>
+                                    <td>
+                                        <input type="number" name="quantity" th:value="${shoeSize.getQuantity()}">
+                                    </td>
+                                    <td>
+                                        <button type="button"
+                                                class="accent__button add__product__size__delete__button">Видалити
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                            <button type="button" class="accent__button add__product__size__button">Додати
+                                розмір
+                            </button>
+                        </div>
+                    </div>
+                    <div class="add__product__submit__container">
+                        <button type="submit" class="accent__button">Додати товар</button>
+                    </div>
+                </form>
+                <script th:src="@{/js/catalog/addProduct.js}"></script>
+            </div>
+        </div>
+    </main>
+    <footer th:replace="~{fragments::footer}"></footer>
+</div>
+</body>
+</html>

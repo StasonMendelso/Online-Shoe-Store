@@ -1,6 +1,6 @@
 package com.shoe.store.mapper;
 
-import com.shoe.store.dto.ShoeColorStatusDto;
+import com.shoe.store.dto.shoe.ShoeColorStatusDto;
 import com.shoe.store.model.shoe.Shoe;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

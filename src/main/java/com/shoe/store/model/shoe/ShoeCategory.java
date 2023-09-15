@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
  * @author Stanislav Hlova
  */
 @Entity
-@Table(name = "shoe_heel_height")
+@Table(name = "shoe_category")
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Builder

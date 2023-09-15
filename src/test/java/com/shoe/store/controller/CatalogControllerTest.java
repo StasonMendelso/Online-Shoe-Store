@@ -1,9 +1,9 @@
 package com.shoe.store.controller;
 
 import com.shoe.store.BaseUnitTest;
-import com.shoe.store.dto.ShoeCardDto;
-import com.shoe.store.dto.ShoeCatalogItemDto;
-import com.shoe.store.dto.ShoeColorStatusDto;
+import com.shoe.store.dto.shoe.ShoeCardDto;
+import com.shoe.store.dto.shoe.ShoeCatalogItemDto;
+import com.shoe.store.dto.shoe.ShoeColorStatusDto;
 import com.shoe.store.mapper.ShoeColorStatusMapper;
 import com.shoe.store.mapper.ShoeMapper;
 import com.shoe.store.model.shoe.Shoe;

@@ -1,4 +1,4 @@
-package com.shoe.store.dto;
+package com.shoe.store.dto.shoe;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,6 +13,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class ShoeSizeDto {
-    private Integer size;
-    private Integer quantity;
+    private String size;
+    private String quantity;
 }

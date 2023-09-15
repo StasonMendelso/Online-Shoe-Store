@@ -1,7 +1,7 @@
 package com.shoe.store.mapper;
 
-import com.shoe.store.dto.ShoeCardDto;
-import com.shoe.store.dto.ShoeCatalogItemDto;
+import com.shoe.store.dto.shoe.ShoeCardDto;
+import com.shoe.store.dto.shoe.ShoeCatalogItemDto;
 import com.shoe.store.model.shoe.Seasonality;
 import com.shoe.store.model.shoe.Shoe;
 import com.shoe.store.model.shoe.ShoeFile;

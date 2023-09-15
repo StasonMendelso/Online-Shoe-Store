@@ -1,7 +1,7 @@
 package com.shoe.store.mapper;
 
-import com.shoe.store.dto.ColorDto;
-import com.shoe.store.dto.ShoeColorStatusDto;
+import com.shoe.store.dto.shoe.ColorDto;
+import com.shoe.store.dto.shoe.ShoeColorStatusDto;
 import com.shoe.store.enums.ProductStatus;
 import com.shoe.store.model.shoe.Color;
 import com.shoe.store.model.shoe.Shoe;

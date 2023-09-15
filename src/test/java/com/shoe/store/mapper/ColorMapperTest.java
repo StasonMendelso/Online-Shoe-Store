@@ -1,6 +1,6 @@
 package com.shoe.store.mapper;
 
-import com.shoe.store.dto.ColorDto;
+import com.shoe.store.dto.shoe.ColorDto;
 import com.shoe.store.model.shoe.Color;
 import com.shoe.store.BaseUnitTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;

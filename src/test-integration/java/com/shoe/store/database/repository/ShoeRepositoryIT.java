@@ -1,9 +1,25 @@
 package com.shoe.store.database.repository;
 
+import com.shoe.store.IntegrationTestBase;
 import com.shoe.store.model.file.File;
+import com.shoe.store.model.shoe.Brand;
+import com.shoe.store.model.shoe.Color;
+import com.shoe.store.model.shoe.FastenerType;
+import com.shoe.store.model.shoe.HeelHeight;
+import com.shoe.store.model.shoe.InsoleMaterial;
+import com.shoe.store.model.shoe.ManufacturerCountry;
+import com.shoe.store.model.shoe.ProductMaterial;
+import com.shoe.store.model.shoe.Seasonality;
+import com.shoe.store.model.shoe.Sex;
 import com.shoe.store.model.shoe.Shoe;
+import com.shoe.store.model.shoe.ShoeCategory;
 import com.shoe.store.model.shoe.ShoeFile;
+import com.shoe.store.model.shoe.SockType;
+import com.shoe.store.model.shoe.SoleMaterial;
+import com.shoe.store.model.shoe.SoleType;
+import com.shoe.store.model.shoe.TopMaterial;
 import lombok.AllArgsConstructor;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -13,7 +29,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
-import com.shoe.store.IntegrationTestBase;
 import java.util.List;
 import java.util.Optional;
 
@@ -142,5 +157,151 @@ class ShoeRepositoryIT extends IntegrationTestBase {
         Optional<Long> actual = shoeRepository.findMainPhotoIdByShoeId(id);
 
         assertTrue(actual.isEmpty());
+    }
+
+    @Test
+    void shouldReturnAllSex_whenPersisted() {
+        final List<Sex> expected = List.of(new Sex(1L, "Жіноча"), new Sex(3L, "Унісекс"), new Sex(2L, "Чоловіча"));
+
+        List<Sex> actual = shoeRepository.findAllSex();
+
+        assertThat(actual).hasSameElementsAs(expected);
+    }
+
+    @Test
+    void shouldReturnAllBrand_whenPersisted() {
+        final List<Brand> expected = List.of(new Brand(1L, "Dual"), new Brand(3L, "Bashilii"), new Brand(2L, "Springer"));
+
+        List<Brand> actual = shoeRepository.findAllBrand();
+
+        assertThat(actual).hasSameElementsAs(expected);
+
+    }
+
+    @Test
+    void shouldReturnAllManufacturerCountry_whenPersisted() {
+        final List<ManufacturerCountry> expected = List.of(new ManufacturerCountry(1L, "Україна"), new ManufacturerCountry(3L, "Турція"), new ManufacturerCountry(2L, "Китай"));
+
+        List<ManufacturerCountry> actual = shoeRepository.findAllManufacturerCountry();
+
+        assertThat(actual).hasSameElementsAs(expected);
+    }
+
+    @Test
+    void shouldReturnAllSoleMaterial_whenPersisted() {
+        final List<SoleMaterial> expected = List.of(new SoleMaterial(1L, "EVA пінка"), new SoleMaterial(3L, "Полівінілхлорид"), new SoleMaterial(2L, "Пінка"), new SoleMaterial(4L, "Поліуретан"));
+
+        List<SoleMaterial> actual = shoeRepository.findAllSoleMaterial();
+
+        assertThat(actual).hasSameElementsAs(expected);
+    }
+
+    @Test
+    void shouldReturnAllTopMaterial_whenPersisted() {
+        final List<TopMaterial> expected = List.of(new TopMaterial(1L, "Велюр"), new TopMaterial(3L, "Текстиль"), new TopMaterial(2L, "Натуральна шкіра"));
+
+        List<TopMaterial> actual = shoeRepository.findAllTopMaterial();
+
+        assertThat(actual).hasSameElementsAs(expected);
+    }
+
+    @Test
+    void shouldReturnAllInsoleMaterial_whenPersisted() {
+        final List<InsoleMaterial> expected = List.of(new InsoleMaterial(1L, "Текстиль"),
+                new InsoleMaterial(2L, "Екошкіра"));
+
+        List<InsoleMaterial> actual = shoeRepository.findAllInsoleMaterial();
+
+        assertThat(actual).hasSameElementsAs(expected);
+    }
+
+    @Test
+    void shouldReturnAllProductMaterial_whenPersisted() {
+        final List<ProductMaterial> expected = List.of(new ProductMaterial(1L, "Полівінілхлорид"),
+                new ProductMaterial(3L, "EVA пінка"), new ProductMaterial(2L, "Поліуретан"),
+                new ProductMaterial(4L, "Пінка"));
+
+        List<ProductMaterial> actual = shoeRepository.findAllProductMaterial();
+
+        assertThat(actual).hasSameElementsAs(expected);
+    }
+
+    @Test
+    void shouldReturnAllSoleType_whenPersisted() {
+        final List<SoleType> expected = List.of(new SoleType(1L, "Без каблука"),
+                new SoleType(2L, "Каблук"));
+
+        List<SoleType> actual = shoeRepository.findAllSoleType();
+
+        assertThat(actual).hasSameElementsAs(expected);
+    }
+
+    @Test
+    void shouldReturnAllHeelHeight_whenPersisted() {
+        final List<HeelHeight> expected = List.of(new HeelHeight(1L, "Міні (менше 3см)"), new HeelHeight(3L, "Високий (більше 7см)"), new HeelHeight(2L, "Середній (4-7см)"));
+
+        List<HeelHeight> actual = shoeRepository.findAllHeelHeight();
+
+        assertThat(actual).hasSameElementsAs(expected);
+    }
+
+    @Test
+    void shouldReturnAllFastenerType_whenPersisted() {
+        final List<FastenerType> expected = List.of(new FastenerType(1L, "Резинка"),
+                new FastenerType(3L, "Шнурівка"), new FastenerType(2L, "Липучка"),
+                new FastenerType(4L, "Немає"));
+
+        List<FastenerType> actual = shoeRepository.findAllFastenerType();
+
+        assertThat(actual).hasSameElementsAs(expected);
+    }
+
+    @Test
+    void shouldReturnAllSockType_whenPersisted() {
+        final List<SockType> expected = List.of(new SockType(1L, "Закритий"), new SockType(2L, "Відкритий"));
+
+        List<SockType> actual = shoeRepository.findAllSockType();
+
+        assertThat(actual).hasSameElementsAs(expected);
+    }
+
+    @Test
+    void shouldReturnAllShoeCategory_whenPersisted() {
+        final List<ShoeCategory> expected = List.of(new ShoeCategory(1L, "Чоботи"),
+                new ShoeCategory(2L, "Черевики"), new ShoeCategory(3L, "Кросівки"),
+                new ShoeCategory(4L, "Ботильйони"), new ShoeCategory(5L, "Мокасини"),
+                new ShoeCategory(6L, "Босоніжки"), new ShoeCategory(7L, "Шльопанці"),
+                new ShoeCategory(8L, "Балетки"), new ShoeCategory(9L, "Сандалі"),
+                new ShoeCategory(10L, "Кеди"), new ShoeCategory(11L, "Зимові уггі"),
+                new ShoeCategory(12L, "Сабо, мюлі"), new ShoeCategory(13L, "Сліпони"),
+                new ShoeCategory(14L, "Получеревики"), new ShoeCategory(15L, "Туфлі"),
+                new ShoeCategory(16L, "Лофери"), new ShoeCategory(17L, "Кріпери"),
+                new ShoeCategory(18L, "Снікерси"), new ShoeCategory(19L, "В'єтнамки"),
+                new ShoeCategory(20L, "Ботфорти"));
+
+        List<ShoeCategory> actual = shoeRepository.findAllCategory();
+
+        assertThat(actual).hasSameElementsAs(expected);
+    }
+
+    @Test
+    void shouldReturnAllColor_whenPersisted() {
+        final List<Color> expected = List.of(new Color(1L, "Чорний", "#000000"),
+                new Color(2L, "Білий", "#FFFFFF"), new Color(3L, "Бежевий", "#F5F5DC"));
+
+        List<Color> actual = shoeRepository.findAllColor();
+
+        assertThat(actual).hasSameElementsAs(expected);
+    }
+
+    @Test
+    void shouldReturnAllSeasonality_whenPersisted() {
+        final List<Seasonality> expected = List.of(new Seasonality(1L, "Весна"),
+                new Seasonality(2L, "Літо"), new Seasonality(3L, "Осінь"),
+                new Seasonality(4L, "Зима"), new Seasonality(5L, "Всесезон"));
+
+        List<Seasonality> actual = shoeRepository.findAllSeasonality();
+
+        assertThat(actual).hasSameElementsAs(expected);
     }
 }

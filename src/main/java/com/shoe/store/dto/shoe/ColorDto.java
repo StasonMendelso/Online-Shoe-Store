@@ -1,4 +1,4 @@
-package com.shoe.store.dto;
+package com.shoe.store.dto.shoe;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
