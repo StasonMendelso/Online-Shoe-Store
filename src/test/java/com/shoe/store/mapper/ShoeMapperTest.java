@@ -129,7 +129,7 @@ class ShoeMapperTest extends BaseUnitTest {
                 .productMaterial(shoeInstance.getProductMaterial().getName())
                 .shoeSizeList(shoeInstance.getShoeSizeList().stream()
                         .map(shoeSize -> ShoeSizeDto.builder()
-                                .size(shoeSize.getSize())
+                                .size(String.valueOf(shoeSize.getSize()))
                                 .build())
                         .toList())
                 .sockType(shoeInstance.getSockType().getName())

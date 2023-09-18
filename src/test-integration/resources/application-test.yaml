@@ -6,9 +6,16 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  datasource:
+    url: jdbc:mysql://localhost:65400/online_shoe_store_dev
+    password: root
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
 logging:
   level:
     com.test: DEBUG
+tests:
+  database_type: test-containers
 app:
   file:
     product-file-not-found-path: src/test-integration/resources/data/1_1.jpg
